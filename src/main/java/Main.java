@@ -18,9 +18,9 @@ public class Main {
 
     private void start() {
         File file = new File("C:\\Users\\Cedric\\Desktop\\testfilme.txt");
-        String BASE_URL="http://192.168.178.25:8080/api/files/upload";
+        String BASE_URL="http://localhost:8080/server/api/files/upload";
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost postRequest = new HttpPost(BASE_URL) ;
+        HttpPost postRequest = new HttpPost(BASE_URL);
         try
         {
 
@@ -31,6 +31,7 @@ public class Main {
             FileBody fileBody = new FileBody(file, "application/octect-stream") ;
             //Prepare payload
             builder.addPart("attachment", fileBody);
+            builder.addTextBody("attachment", "cedric.schreiner@gmail.com\\testfilme.txt");
             //multiPartEntity.addPart("attachment", fileBody) ;
 
             //Set to request body
